@@ -329,6 +329,140 @@ body {
     transform: scale(0.95);
 }
 
+/* Detail Modal Specifics */
+.detail-modal .modal-content {
+    max-width: 500px;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    background: var(--background-color);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    background: rgba(255,255,255,0.5);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.detail-image-section {
+    height: 300px;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.detail-image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-image-section svg {
+    width: 120px;
+    height: 120px;
+    fill: white;
+}
+
+.detail-info-section {
+    padding: 30px;
+    text-align: left;
+}
+
+.detail-header {
+    margin-bottom: 25px;
+}
+
+.detail-name-row {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2E3D49;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+.detail-cpf-row {
+    font-size: 1.2rem;
+    color: #2E3D49;
+    margin-bottom: 5px;
+}
+
+.detail-dept-row {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.call-action-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.call-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    color: #4DB6AC;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.call-btn:active {
+    transform: scale(0.9);
+}
+
+.call-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+}
+
+.call-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+.detail-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.detail-item-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #7A9D96;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-item-value {
+    font-size: 1.1rem;
+    color: #2E3D49;
+    font-weight: 500;
+}
+
 /* Toast */
 .toast {
     position: fixed;

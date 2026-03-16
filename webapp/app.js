@@ -149,8 +149,63 @@ window.toggleBookmark = (id) => {
 };
 
 function showDetails(emp) {
-    // For now just alert, can implement detail modal later
-    console.log('Details for:', emp);
+    const detailBody = document.getElementById('detailBody');
+    const isBookmarked = bookmarks[emp.id];
+    
+    detailBody.innerHTML = `
+        <div class="detail-image-section">
+            ${emp.imageUrl ? `<img src="${emp.imageUrl}" alt="${emp.name}">` : `
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            `}
+        </div>
+        <div class="detail-info-section">
+            <div class="detail-header">
+                <div class="detail-name-row">${emp.name}, ${emp.designation}</div>
+                <div class="detail-cpf-row">${emp.cpfNo}</div>
+                <div class="detail-dept-row">${emp.department}</div>
+            </div>
+
+            <div class="call-action-section">
+                <a href="tel:${emp.phoneNumber}" class="call-btn">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                </a>
+                <span class="call-label">CALL</span>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <div class="detail-item-label">NAME</div>
+                    <div class="detail-item-value">${emp.name}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-item-label">DESIGNATION</div>
+                    <div class="detail-item-value">${emp.designation}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-item-label">CPF NO</div>
+                    <div class="detail-item-value">${emp.cpfNo}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-item-label">SECTION</div>
+                    <div class="detail-item-value">${emp.section}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-item-label">DEPARTMENT</div>
+                    <div class="detail-item-value">${emp.department}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-item-label">EXT NO</div>
+                    <div class="detail-item-value">${emp.extNo}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-item-label">MOBILE</div>
+                    <div class="detail-item-value">${emp.phoneNumber}</div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('detailModal').classList.add('active');
 }
 
 function showToast(msg) {
