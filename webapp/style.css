@@ -50,7 +50,7 @@ body {
 .header-content {
     display: flex;
     justify-content: space-between;
-    alignment-items: center;
+    align-items: center;
     max-width: 600px;
     margin: 0 auto;
 }
