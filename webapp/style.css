@@ -29,6 +29,14 @@ body {
     line-height: 1.6;
 }
 
+body.modal-open {
+    overflow: hidden !important;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    overscroll-behavior: none;
+}
+
 #app {
     display: flex;
     flex-direction: column;
@@ -287,6 +295,15 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    overflow: hidden;
+    overscroll-behavior: contain;
+}
+
+@media (max-width: 600px) {
+    .modal {
+        align-items: flex-end;
+        padding: 0;
+    }
 }
 
 .modal.active {
@@ -298,10 +315,42 @@ body {
     padding: 30px;
     border-radius: 24px;
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     text-align: center;
     box-shadow: var(--shadow-strong);
     animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    max-height: 70vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        max-width: 100%;
+        border-radius: 24px 24px 0 0;
+        animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        padding-top: 30px;
+        padding-bottom: calc(20px + var(--safe-area-bottom));
+        margin: 0;
+    }
+    
+    .modal-content::before {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 35px;
+        height: 4px;
+        background: #ddd;
+        border-radius: 5px;
+    }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
 }
 
 @keyframes modalPop {
@@ -333,9 +382,18 @@ body {
 .detail-modal .modal-content {
     max-width: 500px;
     padding: 0;
-    overflow: hidden;
-    position: relative;
     background: var(--background-color);
+    overflow: hidden;
+    border-radius: 28px;
+}
+
+@media (max-width: 600px) {
+    .detail-modal .modal-content {
+        max-width: 100%;
+        border-radius: 24px 24px 0 0;
+        height: 65vh; /* Very conservative height */
+        overflow-y: auto;
+    }
 }
 
 .close-btn {
@@ -356,12 +414,25 @@ body {
 }
 
 .detail-image-section {
-    height: 300px;
+    height: 250px;
     background: #ccc;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    flex-shrink: 0;
+}
+
+@media (max-height: 700px) {
+    .detail-image-section {
+        height: 150px;
+    }
+}
+
+@media (max-height: 600px) {
+    .detail-image-section {
+        height: 120px;
+    }
 }
 
 .detail-image-section img {
@@ -377,12 +448,12 @@ body {
 }
 
 .detail-info-section {
-    padding: 30px;
+    padding: 20px;
     text-align: left;
 }
 
 .detail-header {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .detail-name-row {
@@ -408,7 +479,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .call-btn {
@@ -461,6 +532,10 @@ body {
     font-size: 1.1rem;
     color: #2E3D49;
     font-weight: 500;
+}
+
+.detail-info-section {
+    padding-bottom: calc(30px + var(--safe-area-bottom));
 }
 
 /* Toast */

@@ -206,6 +206,7 @@ function showDetails(emp) {
     `;
     
     document.getElementById('detailModal').classList.add('active');
+    document.body.classList.add('modal-open');
 }
 
 function showToast(msg) {
@@ -217,6 +218,7 @@ function showToast(msg) {
 
 function closeModal(id) {
     document.getElementById(id).classList.remove('active');
+    document.body.classList.remove('modal-open');
 }
 
 /**
@@ -257,6 +259,7 @@ function setupEventListeners() {
     window.addEventListener('click', (e) => {
         if (e.target.classList.contains('modal')) {
             e.target.classList.remove('active');
+            document.body.classList.remove('modal-open');
         }
     });
 }

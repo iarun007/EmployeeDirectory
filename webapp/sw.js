@@ -1,14 +1,15 @@
-const CACHE_NAME = 'ipeot-dir-v1';
+const CACHE_NAME = 'ipeot-dir-v7';
 const ASSETS = [
   'index.html',
-  'style.css',
-  'app.js',
+  'style.css?v=7',
+  'app.js?v=7',
   'manifest.json',
   'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap'
 ];
 
 // Install Event
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       console.log('Caching assets');
@@ -25,6 +26,8 @@ self.addEventListener('activate', event => {
         keys.filter(key => key !== CACHE_NAME)
             .map(key => caches.delete(key))
       );
+    }).then(() => {
+        return self.clients.claim();
     })
   );
 });
